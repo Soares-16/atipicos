@@ -3,46 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Atipicos</title>
-</head>
-<style>
-    body {
-        text-align: center;
-        font-family: Arial, sans-serif;
-    }
-    h1 {
-        text-align: center;
-    }
-    ul {
-        list-style: none;
-        padding: 0;
-    }
-    li {
-        margin: 20px auto;
-        max-width: 600px;
-        text-align: left;
-    }
-    h1 {
-        color: #0000CD; /* Cor laranja, mude conforme necessário */
-        text-align: center;
-        font-size: 2.5em;
-    }
-</style>
+    <title>Blog Atípicos</title>
+    <style>
+        body {
+            background-color: #ede8e8; /* Fundo cinza  */
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        .logo {
+            width: 150px; /* Ajuste do tamanho da logo */
+            margin: 20px auto;
+            display: block;
+        }
+        h1 {
+            color: #0000CD;
+            font-size: 3em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin: 20px auto;
+            max-width: 600px;
+            text-align: left;
+            background: #ffffff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        a {
+            text-decoration: none;
+            color: #0a0a0e;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: darkred;
+        }
+        .logo {
+        width: 150px; /* Ajusta o tamanho da logo */
+        float: left; /* Move a logo para o lado esquedo */
+        margin: 10px; /* Adiciona espaçamento ao redor */
+        }
 
+
+    </style>
+</head>
 <body>
-    <h1>Atipícos</h1>
-    <a href="{{ url_for('create') }}">Criar Novo Post</a>
-    <ul>
-        {% for post in posts %}
-            <li>
-                <h2>{{ post.title }}</h2>
-                <p>{{ post.content }}</p>
-                <a href="{{ url_for('edit', id=post.id) }}">Editar</a>
-                <form action="{{ url_for('delete', id=post.id) }}" method="post" style="display:inline;">
-                    <button type="submit">Deletar</button>
-                </form>
-            </li>
-        {% endfor %}
-    </ul>
+   
+    <div class="container">
+       
+        <!-- Logo do Blog -->
+         <img src="https://i.postimg.cc/xCGgpMzQ/logo.jpg" alt="Logo do Blog Atípicos"   class="logo">
+        
+        <!-- Título do Blog -->
+        <h1>Atípicos</h1>
+        
+        <a href="{{ url_for('create') }}">Criar Novo Post</a>
+        <ul>
+            {% for post in posts %}
+                <li>
+                    <h2>{{ post.title }}</h2>
+                    <p>{{ post.content }}</p>
+                    <a href="{{ url_for('edit', id=post.id) }}">Editar</a>
+                        <form action="{{ url_for('delete', id=post.id) }}" method="post" style="display:inline;">
+                        <button type="submit" onclick="return confirm('Tem certeza que deseja apagar este post?')">
+                            Deletar
+                        </button>
+                    </form>
+                    
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
 </body>
 </html>
