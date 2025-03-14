@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Atípicos</title>
+    <title> Atípicos</title>
     <style>
         body {
             background-color: #ede8e8; /* Fundo cinza  */
@@ -21,9 +21,9 @@
             border-radius: 10px;
         }
         .logo {
-            width: 150px; /* Ajuste do tamanho da logo */
-            margin: 20px auto;
-            display: block;
+            width: 150px; /* Ajusta  tamanho logo */
+            float: left; /* Move a logo p/ esqueda */
+            margin: 10px; /
         }
         h1 {
             color: #0000CD;
@@ -62,25 +62,16 @@
         button:hover {
             background-color: darkred;
         }
-        .logo {
-        width: 150px; /* Ajusta o tamanho da logo */
-        float: left; /* Move a logo para o lado esquedo */
-        margin: 10px; /* Adiciona espaçamento ao redor */
-        }
-
-
-    </style>
+   </style>
 </head>
 <body>
    
     <div class="container">
-       
-        <!-- Logo do Blog -->
+       <!-- Logo do Blog -->
          <img src="https://i.postimg.cc/xCGgpMzQ/logo.jpg" alt="Logo do Blog Atípicos"   class="logo">
         
         <!-- Título do Blog -->
-        <h1>Atípicos</h1>
-        
+        <h1>Atípicos <p style="text-align:center"></p></h1>
         <a href="{{ url_for('create') }}">Criar Novo Post</a>
         <ul>
             {% for post in posts %}
