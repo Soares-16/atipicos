@@ -27,7 +27,7 @@
         }
         h1 {
             color: #0000CD;
-            font-size: 3em;
+            font-size: 5em;
             font-weight: bold;
             margin-bottom: 20px;
         }
@@ -50,12 +50,12 @@
             font-weight: bold;
             display: inline-block;
             margin-bottom: 10px;
-        }
+        } 
         button {
             background-color: red;
             color: white;
             border: none;
-            padding: 5px 10px;
+            padding: 6px 11px;
             cursor: pointer;
             border-radius: 5px;
         }
@@ -72,21 +72,37 @@
         
         <!-- Título do Blog -->
         <h1>Atípicos <p style="text-align:center"></p></h1>
-        <a href="{{ url_for('create') }}">Criar Novo Post</a>
+
+        <button onclick="window.location.href='{{ url_for('create') }}'">Criar Novo Post</button>;
+
         <ul>
             {% for post in posts %}
                 <li>
                     <h2>{{ post.title }}</h2>
                     <p>{{ post.content }}</p>
                     <a href="{{ url_for('edit', id=post.id) }}">Editar</a>
-                        <form action="{{ url_for('delete', id=post.id) }}" method="post" style="display:inline;">
+                    <form action="{{ url_for('delete', id=post.id) }}" method="post" style="display:inline;">
                         <button type="submit" onclick="return confirm('Tem certeza que deseja apagar este post?')">
                             Deletar
                         </button>
                     </form>
-                    
                 </li>
             {% endfor %}
+        </ul>
+        
+        <style>
+            p {
+                white-space: pre-wrap;
+                word-wrap: break-word;
+            }
+        
+            @media print {
+                li {
+                    page-break-after: always;
+                }
+            }
+        </style>
+        
         </ul>
     </div>
     <!-- Texto final -->
